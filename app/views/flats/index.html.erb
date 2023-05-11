@@ -4,10 +4,10 @@
     <% @num = 0 %>
     <% @flats.each do |flat| %>
       <% @num += 1 %>
-      <div class="card me-auto mt-3 mb-3 p-0"" style="width: 25rem;">
+      <div class="card mt-3 me-3 mb-3 p-0" style="width: 25rem;">
         <div class="col">
           <%= image_tag "flat#{@num}.png", class:"card-img-top"%>
-          <div class="card-body">
+          <div class="card-body h-auto">
             <h5 class="card-title"><%= flat.name  %></h5>
             <p class="card-text"><%= flat.description %></p>
           </div>
@@ -17,8 +17,9 @@
             <li style="list-style-type:none"></li>
           </ul>
           <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <%= link_to 'More Info', flat_path(flat), class:"card-link" %>
+            <%= link_to 'Edit', edit_flat_path(flat), class:"card-link" %>
+            <%= link_to 'Remove', flat_path(flat), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"card-link" %>
           </div>
         </div>
       </div>
